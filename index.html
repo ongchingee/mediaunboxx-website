@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Creative Agency - Media Unboxx</title>
+    <link rel="stylesheet" href="css/fonts.css">
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+    <div class="scene">
+        <div class="cube" id="cube">
+            <!-- Inner Cube - Fixed position, glowing effect -->
+            <a href="https://mediaunboxx.com" class="inner-cube" id="inner-cube">
+                <div class="inner-cube-content">
+                    <img src="images/media unboxx logo square.png" alt="About Us" class="inner-cube-image">
+                </div>
+            </a>
+            
+            <!-- CUBE FACE: FRONT (SOCIAL MEDIA) -->
+            <a href="/social-media" target="_blank" class="cube-face front" style="background-color: #000000; background-image: url('images/test-social-media-cube-face.webp'); background-size: cover; background-position: center; background-repeat: no-repeat;">    
+                <video 
+                    width="100%" 
+                    height="100%" 
+                    autoplay 
+                    loop 
+                    muted 
+                    playsinline>    
+                    <source src="videos/cube face - social media 800x800 compressed.mp4" type="video/mp4"> 
+                    Your browser does not support the video tag  
+                </video> 
+                <div class="face-text">SOCIAL MEDIA<br>MARKETING</div>    
+            </a>
+            
+            <!-- CUBE FACE: BACK (INFLUENCER MARKETING-->
+            <a href="/influencer-marketing" target="_blank" class="cube-face back" style="background-color: #000000;">
+                <video 
+                    width="100%" 
+                    height="100%" 
+                    autoplay 
+                    loop 
+                    muted 
+                    playsinline>    
+                    <source src="videos/cube face - influencer marketing 800x800 compressed.mp4" type="video/mp4"> 
+                    Your browser does not support the video tag  
+                </video>
+                <div class="face-text">INFLUENCER<br>MARKETING</div>
+            </a>
+            
+            <!-- CUBE FACE: RIGHT (WEBSITE DEVELOPMENT) -->
+             <a href="/website-design-development" target="_blank" class="cube-face right" style="background-color: #000000;">
+            <!--    <img src="images/Passion-Oolong-Fizz-6-cans-1.jpg" alt="Web Development">  -->
+                <video
+                    width="100%" 
+                    height="100%"
+                    autoplay
+                    loop
+                    muted
+                    playsinline>
+                    <!-- Change video source here -->
+                    <source src="videos/cube face - website 800x800 compressed.mp4" type="video/mp4">
+                    Your browser does not support the video tag.
+                </video>
+                <div class="face-text">WEB<br>DESIGN &<br>DEVELOPMENT</div>
+            </a>
+            
+            <a href="/media-production" target="_blank" class="cube-face left" style="background-color: #000000; background-image: url('images/cube face media production background image.webp'); background-size: cover; background-position: center; background-repeat: no-repeat;">
+                <video
+                    width="100%" 
+                    height="100%"
+                    autoplay
+                    loop
+                    muted
+                    playsinline>
+                    <!-- Change video source here -->
+                    <source src="videos/cube face - media production 800x800 compressed v2.mp4" type="video/mp4">
+                    Your browser does not support the video tag.
+                </video>
+                <div class="face-text">MEDIA<br>PRODUCTION</div>
+            </a>
+            
+            <a href="/event-planning-pr" target="_blank" class="cube-face top" style="background-color: #000000;">  
+                <video   
+                    width="100%"    
+                    height="100%"   
+                    autoplay    
+                    loop    
+                    muted   
+                    playsinline>    
+                    <!-- Change video source here -->
+                    <source src="videos/cube face - event 800x800 compressed.mp4" type="video/mp4"> 
+                    Your browser does not support the video tag  
+                </video>    
+                <div class="face-text">EVENT<br>MANAGEMENT<br>& PR</div>    
+            </a>    
+            
+            <!-- CUBE FACE: BOTTOM (PERFORMANCE STRATEGIES)-->
+            <a href="/performance-strategies" target="_blank" class="cube-face bottom" style="background-color: #000000;">
+                <video   
+                    width="100%"    
+                    height="100%"   
+                    autoplay    
+                    loop    
+                    muted   
+                    playsinline>    
+                    <!-- Change video source here -->
+                    <source src="videos/cube face - performance strategies 800x800 compressed.mp4" type="video/mp4"> 
+                    Your browser does not support the video tag  
+                </video> 
+                <div class="face-text">PERFORMANCE<br>STRATEGIES</div>
+            </a>
+        </div>
+    </div>
+    
+    <div class="controls">
+        <button class="help-btn" style="grid-column: 1; grid-row: 1;" id="help-btn" aria-label="Show help instructions">?</button>
+
+        <!-- Replace your unbox button with this (individual line translations): -->
+        <button class="control-btn unbox-btn" style="grid-column: 1; grid-row: 3;" id="unbox-btn" aria-label="Toggle cube unboxed state">
+            <svg width="28" height="28" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="3" class="boxed-state">
+                <!-- Default state with individual classes for line translations -->
+                <!-- Top horizontal line -->
+                <path d="M12 8h24" stroke-linecap="round" class="top-line"/>
+                
+                <!-- Top flap (chevron up) -->
+                <path d="M20 12l4-4 4 4" stroke-linecap="round" stroke-linejoin="round" class="top-flap"/>
+                
+                <!-- Left vertical line -->
+                <path d="M8 12v24" stroke-linecap="round" class="left-line"/>
+                
+                <!-- Left flap (chevron left) -->
+                <path d="M12 20l-4 4 4 4" stroke-linecap="round" stroke-linejoin="round" class="left-flap"/>
+                
+                <!-- Right vertical line -->
+                <path d="M40 12v24" stroke-linecap="round" class="right-line"/>
+                
+                <!-- Right flap (chevron right) -->
+                <path d="M36 20l4 4-4 4" stroke-linecap="round" stroke-linejoin="round" class="right-flap"/>
+                
+                <!-- Bottom horizontal line -->
+                <path d="M12 40h24" stroke-linecap="round" class="bottom-line"/>
+                
+                <!-- Bottom flap (chevron down) -->
+                <path d="M20 36l4 4 4-4" stroke-linecap="round" stroke-linejoin="round" class="bottom-flap"/>
+            </svg>
+        </button>
+
+        <button class="zoom-btn" style="grid-column: 1; grid-row: 7;" id="zoom-out-btn" aria-label="Zoom out">−</button>
+        <button class="zoom-btn" style="grid-column: 5; grid-row: 7;" id="zoom-in-btn" aria-label="Zoom in">+</button>
+        <button class="control-btn" style="grid-column: 3; grid-row: 7;" id="up-btn" aria-label="Rotate cube up">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                <path d="M7.41 15.41L12 10.83l4.59 4.58L18 14l-6-6-6 6z"/>
+            </svg>
+        </button>
+        <button class="control-btn" style="grid-column: 1; grid-row: 9;" id="left-btn" aria-label="Rotate cube left">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                <path d="M15.41 7.41L14 6l-6 6 6 6 1.41-1.41L10.83 12z"/>
+            </svg>
+        </button>
+        <button class="control-btn reset-btn" style="grid-column: 3; grid-row: 9;" id="reset-btn" aria-label="Reset cube to default position">RESET</button>
+        
+        <button class="control-btn" style="grid-column: 5; grid-row: 9;" id="right-btn" aria-label="Rotate cube right">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                <path d="M10 6L8.59 7.41 13.17 12l-4.58 4.59L10 18l6-6z"/>
+            </svg>
+        </button>
+                <button class="control-btn" style="grid-column: 3; grid-row: 11;" id="down-btn" aria-label="Rotate cube down">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                <path d="M7.41 8.59L12 13.17l4.59-4.58L18 10l-6 6-6-6z"/>
+            </svg>
+        </button>
+    </div>
+    
+    <!-- Menu Button -->
+    <div class="menu-btn" id="menu-btn" onclick="document.getElementById('popup-menu').classList.add('active');">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+          <path d="M3 18h18v-2H3v2zm0-5h18v-2H3v2zm0-7v2h18V6H3z"/>
+        </svg>
+    </div>
+
+    <!-- Popup Menu -->
+    <div class="popup-menu" id="popup-menu">
+        <button class="menu-close" id="menu-close" onclick="document.getElementById('popup-menu').classList.remove('active');">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+                <path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/>
+            </svg>
+        </button>
+        <div class="menu-links">
+            <a href="/" class="menu-link-main">HOME</a>
+            <span class="menu-link-main">SERVICES</span>
+            <a href="/social-media" class="menu-link-sub">Social Media Marketing</a>
+            <a href="/media-production" class="menu-link-sub">Media Production</a>
+            <a href="/performance-strategies" class="menu-link-sub">Performance Strategies</a>
+            <a href="/website-design-development" class="menu-link-sub">Web Design & Development</a>
+            <a href="/event-planning-pr" class="menu-link-sub">Event Management & PR</a>
+            <a href="/influencer-marketing" class="menu-link-sub">Influencer Marketing</a>
+            <a href="#" class="menu-link-main">ABOUT US</a>
+            <a href="#" class="menu-link-main">CONTACT US</a>
+        </div>
+    </div>
+    
+    <!-- Popup Instructions -->
+    <div class="instructions-popup" id="instructions-popup">
+        <button class="close-popup" id="close-popup">×</button>
+        <h3>How to Play</h3>
+        <p>• ROTATE: Mouse scroll, click & drag or finger scroll to rotate the cube.</p>
+        <p>• ZOOM: Use +/- buttons or 2 finger pinch motion.</p>
+        <p>• RESET: Returns the cube to its default view.</p>
+        <p>Click on any of the image/video to learn more about our services.</p>
+    </div>
+
+    <!-- Page transition overlay -->
+    <div class="page-transition" id="page-transition"></div>
+    
+    <!-- Custom cursor elements -->
+    <div id="custom-cursor" class="custom-cursor">
+        <div class="cursor-content">
+            <span class="cursor-text">View</span>
+        </div>
+    </div>
+    
+    <script src="js/muheader-script.js"></script>
+    <script src="js/script.js"></script>
+</body>
+</html>

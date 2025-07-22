@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Website Design & Development</title>
+    
+    <!-- Google Font: Josefin Sans -->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@300;400;500;600;700&display=swap">
+    
+    <!-- Font Awesome for icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="/css/musvc-styles.css">
+</head>
+<body>
+    <!-- Menu Button -->
+    <div class="menu-btn" id="menu-btn" onclick="document.getElementById('popup-menu').classList.add('active');">
+        <i class="fas fa-bars"></i>
+    </div>
+
+    <!-- Popup Menu -->
+    <div class="popup-menu" id="popup-menu">
+        <button class="menu-close" id="menu-close" onclick="document.getElementById('popup-menu').classList.remove('active');">
+            <i class="fas fa-times"></i>
+        </button>
+        <div class="menu-links">
+            <a href="/" class="menu-link-main">HOME</a>
+            <span class="menu-link-main">SERVICES</span>
+            <a href="/social-media" class="menu-link-sub">Social Media</a>
+            <a href="/media-production" class="menu-link-sub">Media Production</a>
+            <a href="/performance-strategies" class="menu-link-sub">Performance Strategies</a>
+            <a href="/website-design-development" class="menu-link-sub">Website Design & Development</a>
+            <a href="/event-planning-pr" class="menu-link-sub">Event Planning & PR</a>
+            <a href="/influencer-marketing" class="menu-link-sub">Influencer Marketing</a>
+            <a href="#" class="menu-link-main">ABOUT US</a>
+            <a href="#" class="menu-link-main">CONTACT US</a>
+        </div>
+    </div>
+    
+    <div id="servicecube-container">
+        <div id="section1" class="section">
+            <div class="content-overlay">
+                <div class="section1-container">
+                    <div class="left-container2">
+                        <div class="rotated-wrapper">
+                            <h1 class="rotated-title2">WEBSITE<br>DESIGN &<br>DEVELOPMENT</h1>
+                        </div>
+                    </div>
+                    <div class="right-container">
+                        <p>Your website is your brand’s digital home – the place where first impressions are made, and connections are built. At Media Unboxx, we design and develop websites that combine stunning visuals with seamless UI/UX to deliver exceptional user experiences. Whether it’s an intuitive e-commerce platform or scalable solutions for future growth, we craft digital spaces that engage, convert, and drive results.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div id="section2" class="section">
+            <div class="content-overlay">
+                <h2 id="section2-title" class="outline-text">WHAT WE DO</h2>
+                <p id="section2-text">Website Expertise 1 description here. Expertise 1 description here. Expertise 1 description here. Expertise 1 description here. Expertise 1 description here. Expertise 1 description here.</p>
+            </div>
+        </div>
+
+        <div id="section3" class="section"> <!-- Edited section 3 video -->
+            <div class="content-overlay"> 
+                <h2 class="section-title">Our Works</h2>
+                <div class="video-overlay">
+                    <div class="play-button-container">
+                        <div class="play-button">
+                            <i class="fas fa-play"></i>
+                        </div>
+                        <div class="play-text">View Our Showreel</div>
+                        <div class="mobile-only-text">Tap to watch video</div>
+                    </div>
+                </div>
+            </div>
+            <video id="background-video" autoplay muted loop playsinline preload="auto" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: cover; z-index: -1;">
+              <source src="/videos/BrewMuggers_Post_WW_R1-1.mp4" type="video/mp4">
+              <source src="#" type="video/webm">
+                  Your browser does not support the video tag.
+            </video>
+        </div>
+
+        <div id="section4" class="section">
+            <div class="content-overlay" style="justify-content: flex-end; padding-bottom: 10%;">
+                <h2>READY TO BREAK THE ALGORITHM?</h2>
+                <p>Let's create social content that actually connect with your target audience.<br>Get in touch with us at hello@mediaunboxx.com</p>
+            </div>
+        </div>
+    </div>
+
+    <div class="nav-dots-container">
+        <!-- Up arrow -->
+        <div class="nav-arrow nav-arrow-up" id="nav-arrow-up">
+            <i class="fas fa-chevron-up"></i>
+        </div>
+        
+        <!-- Nav dots -->
+        <div class="nav-dots">
+            <div class="nav-dot active" data-section="0"></div>
+            <div class="nav-dot" data-section="1"></div>
+            <div class="nav-dot" data-section="2"></div>
+            <div class="nav-dot" data-section="3"></div>
+        </div>
+        
+        <!-- Down arrow -->
+        <div class="nav-arrow nav-arrow-down" id="nav-arrow-down">
+            <i class="fas fa-chevron-down"></i>
+        </div>
+    </div>
+    
+    <div id="button-container" style="display: none; position: fixed; bottom: 2%; left: 0; width: 100%; display: flex; justify-content: center; gap: 12px; z-index: 1000; opacity: 0;">
+        <a id="button1WD" href="#" class="active-button" style="width: 90px; height: 90px; display: flex; align-items: center; justify-content: center; background-color: #243447; color: white; font-size: 1.1rem; font-weight: 500; text-decoration: none; border: none; cursor: pointer; box-shadow: 0 4px 8px rgba(0,0,0,0.3); transition: all 0.3s ease; text-align: center;">Expertise<br>1</a>
+        <a id="button2WD" href="#" style="width: 90px; height: 90px; display: flex; align-items: center; justify-content: center; background-color: white; color: #141d26; font-size: 1.1rem; font-weight: 500; text-decoration: none; border: none; cursor: pointer; box-shadow: 0 4px 8px rgba(0,0,0,0.3); transition: all 0.3s ease; text-align: center;">Expertise <br>&<br>2</a>
+        <a id="button3WD" href="#" style="width: 90px; height: 90px; display: flex; align-items: center; justify-content: center; background-color: white; color: #141d26; font-size: 1.1rem; font-weight: 500; text-decoration: none; border: none; cursor: pointer; box-shadow: 0 4px 8px rgba(0,0,0,0.3); transition: all 0.3s ease; text-align: center;">Expertise<br>3</a>
+        <a id="button4WD" href="#" style="width: 90px; height: 90px; display: flex; align-items: center; justify-content: center; background-color: white; color: #141d26; font-size: 1.1rem; font-weight: 500; text-decoration: none; border: none; cursor: pointer; box-shadow: 0 4px 8px rgba(0,0,0,0.3); transition: all 0.3s ease; text-align: center;">Expertise<br>4</a>
+      </div>
+
+    <!-- Video Modal with responsive video sources -->
+    <div id="video-modal" class="video-modal">
+        <div class="video-container">
+            <button class="close-modal" onclick="closeVideoModal()">&times;</button>
+            <video id="modal-video" class="modal-video" controls autoplay muted>
+                <!-- Landscape video for desktop/tablet -->
+                <source class="landscape-video" src="/videos/test_video_landscape.mp4" type="video/mp4">
+                <!-- Portrait video for mobile -->
+                <source class="portrait-video" src="/videos/test_video_mobile.mp4" type="video/mp4" media="(max-width: 768px) and (orientation: portrait)">
+                Your browser does not support the video tag.
+            </video>
+        </div>
+    </div>
+    <!-- Font Awesome Script -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/js/all.min.js"></script>
+    
+    <!-- Custom JavaScript -->
+    <script src="js/muheader-script.js"></script>
+    <script src="js/muservice-script.js"></script>
+</body>
+</html>
