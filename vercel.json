@@ -1,0 +1,10 @@
+{
+  "rewrites": [
+    { "source": "/social-media", "destination": "/social-media.html" },
+    { "source": "/media-production", "destination": "/media-production.html" },
+    { "source": "/performance-strategies", "destination": "/performance-strategies.html" },
+    { "source": "/website-design-development", "destination": "/website-design-development.html" },
+    { "source": "/event-planning-pr", "destination": "/event-planning-pr.html" },
+    { "source": "/influencer-marketing", "destination": "/influencer-marketing.html" }
+  ]
+}
