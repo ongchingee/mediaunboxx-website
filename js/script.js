@@ -5,35 +5,7 @@ document.addEventListener('DOMContentLoaded', function() {
         // Remove the transition class immediately
         document.body.classList.remove('page-transition');
     }
-
-    // === RESPONSIVE VIDEO LOADING ===
-    function loadResponsiveVideos() {
-        // Detect screen size - using 992px as desktop breakpoint (matches your CSS)
-        const isDesktop = window.innerWidth > 992;
-        const videoSuffix = isDesktop ? '1200x1200' : '800x800'; // ← CHANGE THIS LINE
-        
-        // Get all cube face videos
-        const cubeVideos = document.querySelectorAll('.cube-face video');
-        
-        cubeVideos.forEach(video => {
-            const source = video.querySelector('source[type="video/mp4"]');
-            if (source) {
-                const currentSrc = source.getAttribute('src');
-                // Replace the resolution part in the filename
-                const newSrc = currentSrc.replace(/800x800/, videoSuffix);
-
-                // ADD THIS DEBUG LINE:
-                console.log('Changing:', currentSrc, 'to:', newSrc);
-                
-                // Only update if the source actually changes (avoid unnecessary reloads)
-                if (currentSrc !== newSrc) {
-                    source.setAttribute('src', newSrc);
-                    video.load(); // Reload the video with new source
-                }
-            }
-        });
-    }
-    
+   
     // Handle browser back/forward navigation - Simplified for non-menu code - DO NOTE DELETE
     window.addEventListener('pageshow', function(event) {
         // If the page is being restored from the bfcache (back/forward navigation)
@@ -45,6 +17,36 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     });
 
+    // === RESPONSIVE VIDEO LOADING === <-- ADD THIS SECTION HERE
+    function loadResponsiveVideos() {
+        const isDesktop = window.innerWidth > 992;
+        const videoSuffix = isDesktop ? '1200x1200' : '800x800';
+        
+        console.log('Screen width:', window.innerWidth, 'isDesktop:', isDesktop, 'videoSuffix:', videoSuffix);
+        
+        const cubeVideos = document.querySelectorAll('.cube-face video');
+        console.log('Found videos:', cubeVideos.length);
+        
+        cubeVideos.forEach(video => {
+            const source = video.querySelector('source[type="video/mp4"]');
+            if (source) {
+                const currentSrc = source.getAttribute('src');
+                const newSrc = currentSrc.replace(/800x800/, videoSuffix);
+                
+                console.log('Changing:', currentSrc, 'to:', newSrc);
+                
+                if (currentSrc !== newSrc) {
+                    source.setAttribute('src', newSrc);
+                    video.load();
+                }
+            }
+        });
+    }
+
+    // Call responsive video loading on page load
+    loadResponsiveVideos();
+    // END OF RESPONSIVE VIDEO LOADING
+    
     const cube = document.getElementById('cube');
     const cubeFaces = document.querySelectorAll('.cube-face');
     let currentlyHoveredFace = null;
