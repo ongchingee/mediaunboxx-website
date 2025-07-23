@@ -18,33 +18,33 @@ document.addEventListener('DOMContentLoaded', function() {
     });
 
     // === RESPONSIVE VIDEO LOADING === <-- ADD THIS SECTION HERE
-    function loadResponsiveVideos() {
-        const isDesktop = window.innerWidth > 992;
-        const videoSuffix = isDesktop ? '1200x1200' : '800x800';
-        
-        console.log('Screen width:', window.innerWidth, 'isDesktop:', isDesktop, 'videoSuffix:', videoSuffix);
-        
-        const cubeVideos = document.querySelectorAll('.cube-face video');
-        console.log('Found videos:', cubeVideos.length);
-        
-        cubeVideos.forEach(video => {
-            const source = video.querySelector('source[type="video/mp4"]');
-            if (source) {
-                const currentSrc = source.getAttribute('src');
-                const newSrc = currentSrc.replace(/800x800/, videoSuffix);
-                
-                console.log('Changing:', currentSrc, 'to:', newSrc);
-                
-                if (currentSrc !== newSrc) {
-                    source.setAttribute('src', newSrc);
-                    video.load();
-                }
-            }
-        });
-    }
-
+//    function loadResponsiveVideos() {
+//        const isDesktop = window.innerWidth > 992;
+//        const videoSuffix = isDesktop ? '1200x1200' : '800x800';
+//        
+//        console.log('Screen width:', window.innerWidth, 'isDesktop:', isDesktop, 'videoSuffix:', videoSuffix);
+//        
+//        const cubeVideos = document.querySelectorAll('.cube-face video');
+//        console.log('Found videos:', cubeVideos.length);
+//        
+//        cubeVideos.forEach(video => {
+//            const source = video.querySelector('source[type="video/mp4"]');
+//            if (source) {
+//                const currentSrc = source.getAttribute('src');
+//                const newSrc = currentSrc.replace(/800x800/, videoSuffix);
+//                
+//                console.log('Changing:', currentSrc, 'to:', newSrc);
+//                
+//                if (currentSrc !== newSrc) {
+//                    source.setAttribute('src', newSrc);
+//                    video.load();
+//                }
+//            }
+//        });
+//    }
+//
     // Call responsive video loading on page load
-    loadResponsiveVideos();
+//    loadResponsiveVideos();
     // END OF RESPONSIVE VIDEO LOADING
     
     const cube = document.getElementById('cube');
