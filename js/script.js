@@ -21,6 +21,9 @@ document.addEventListener('DOMContentLoaded', function() {
                 const currentSrc = source.getAttribute('src');
                 // Replace the resolution part in the filename
                 const newSrc = currentSrc.replace(/800x800/, videoSuffix);
+
+                // ADD THIS DEBUG LINE:
+                console.log('Changing:', currentSrc, 'to:', newSrc);
                 
                 // Only update if the source actually changes (avoid unnecessary reloads)
                 if (currentSrc !== newSrc) {
