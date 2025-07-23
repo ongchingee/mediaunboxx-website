@@ -222,10 +222,10 @@ document.addEventListener('DOMContentLoaded', function() {
                     document.getElementById('button4IM')
                 ],
                 buttonsData: [
-                    { id: 'button1IM', background: "url('/images/Passion-Oolong-Fizz-6-cans-1.jpg')", text: "This is the description for IM button 1." },
-                    { id: 'button2IM', background: "url('/images/Passion-Oolong-Fizz-6-cans-1.jpg')", text: "This is the description for IM button 2." },
-                    { id: 'button3IM', background: "url('/images/Sake-Tea-Brew.png')", text: "This is the description for IM button 3." },
-                    { id: 'button4IM', background: "url('/images/Sake-Tea-Brew.png')", text: "This is the description for IM button 4." }
+                    { id: 'button1IM', background: "url('images/influencer-marketing-micro-influencer.webp')", text: "We connect you with micro-influencers who have highly engaged, niche audiences in Singapore, Malaysia, and Thailand. Get better conversion rates at lower costs." },
+                    { id: 'button2IM', background: "url('images/influencer-marketing-collab-ugc.webp')", text: "Our influencer partnerships create authentic user-generated content that builds trust and social proof. Transform customer advocacy into a content marketing machine that sells for you 24/7." },
+                    { id: 'button3IM', background: "url('images/influencer-marketing-campaign-strategy.webp')", text: "Our team identifies content creators who align with your brand values and target audience. We manage end-to-end campaigns that generate authentic engagement and measurable business results, not just pretty posts." },
+                    { id: 'button4IM', background: "url('#')", text: "blank" }
                 ],
                 defaultButtonId: 'button1IM',
                 
