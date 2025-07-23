@@ -5,6 +5,31 @@ document.addEventListener('DOMContentLoaded', function() {
         // Remove the transition class immediately
         document.body.classList.remove('page-transition');
     }
+
+    // === RESPONSIVE VIDEO LOADING ===
+    function loadResponsiveVideos() {
+        // Detect screen size - using 992px as desktop breakpoint (matches your CSS)
+        const isDesktop = window.innerWidth > 992;
+        const videoSuffix = isDesktop ? '1200x1200' : '800x800'; // ← CHANGE THIS LINE
+        
+        // Get all cube face videos
+        const cubeVideos = document.querySelectorAll('.cube-face video');
+        
+        cubeVideos.forEach(video => {
+            const source = video.querySelector('source[type="video/mp4"]');
+            if (source) {
+                const currentSrc = source.getAttribute('src');
+                // Replace the resolution part in the filename
+                const newSrc = currentSrc.replace(/800x800/, videoSuffix);
+                
+                // Only update if the source actually changes (avoid unnecessary reloads)
+                if (currentSrc !== newSrc) {
+                    source.setAttribute('src', newSrc);
+                    video.load(); // Reload the video with new source
+                }
+            }
+        });
+    }
     
     // Handle browser back/forward navigation - Simplified for non-menu code - DO NOTE DELETE
     window.addEventListener('pageshow', function(event) {
