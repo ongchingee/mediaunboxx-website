@@ -151,17 +151,19 @@ document.addEventListener('DOMContentLoaded', function() {
                 defaultButtonIdSection4: 'button1S4'
             };
         } 
-        else if (currentPath.includes('/performance-strategies')) {
+        else if (currentPath.includes('/ads-management')) {
             return {
                 buttons: [
                     document.getElementById('button1PS'),
                     document.getElementById('button2PS'),
-                    document.getElementById('button3PS')
+                    document.getElementById('button3PS'),
+                    document.getElementById('button4PS')
                 ],
                 buttonsData: [
-                    { id: 'button1PS', background: "url('/images/Passion-Oolong-Fizz-6-cans-1.jpg')", text: "Performance Strategies Expertise 1 description here. Expertise 1 description here. Expertise 1 description here. Expertise 1 description here. Expertise 1 description here. Expertise 1 description here." },
-                    { id: 'button2PS', background: "url('/images/Peachy-Oolong-Picnic.jpg')", text: "Performance Strategies Expertise 2 description here. Expertise 2 description here. Expertise 1 description here. Expertise 1 description here. Expertise 1 description here. Expertise 1 description here. Expertise 1 description here.." },
-                    { id: 'button3PS', background: "url('/images/Sake-Tea-Brew.png')", text: "Performance Strategies Expertise 3 description here. Expertise 3 description here. Expertise 3 description here. Expertise 1 description here. Expertise 1 description here. Expertise 1 description here. Expertise 1 description here..." }
+                    { id: 'button1PS', background: "url('images/ads-management-google-ads.webp')", text: "Our Google Ads specialists optimize search campaigns, shopping ads, and display advertising for maximum ROI. We eliminate wasted spend on irrelevant keywords and focus budget on searches that convert into customers." },
+                    { id: 'button2PS', background: "url('images/ads-management-meta-ads.webp')", text: "Our Meta Ads experts create and manage Facebook and Instagram campaigns that reach your ideal customers. From awareness to conversion, we build advertising funnels that turn social media users into loyal customers." },
+                    { id: 'button3PS', background: "url('images/ads-management-tiktok-ads.webp')", text: "We manage TikTok advertising campaigns that capture attention and drive action. Our creative-first approach ensures your ads feel native to the platform while delivering measurable business results." },
+                    { id: 'button4PS', background: "url('images/ads-management-analytics.webp')", text: "Our ads management includes comprehensive tracking, A/B testing, and continuous optimization. Get detailed reports that show exactly how your ad spend translates into leads, sales, and business growth." }
                 ],
                 defaultButtonId: 'button1PS',
                 
