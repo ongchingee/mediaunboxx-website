@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ads Management | Google, Meta & TikTok Ads</title>
+    <meta name="description" content="Professional ad management for businesses. We optimize Google Ads, Meta Ads, and TikTok campaigns for maximum ROI. d.">
+
+    <!-- Preload Critical Resources -->
+    <link rel="stylesheet" href="css/fonts.css">
+    <link rel="preload" href="images/ads-management-hero.webp" as="image" type="image/webp">
+     
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="css/musvc-styles.css">
+    
+    <!-- Responsive Background Images -->
+    <style>
+        /* Desktop backgrounds (default) */
+        #section1 {
+            background-image: url('images/ads-management-hero.webp');
+        }
+        #section4 {
+            background-image: url('images/ads-management-cta.webp');
+        }
+        
+        /* Tablet backgrounds */
+        @media (max-width: 992px) {
+            #section1 {
+                background-image: url('images/ads-management-hero.webpp');
+            }
+            #section4 {
+                background-image: url('images/ads-management-cta.webp');
+            }
+        }
+        
+        /* Mobile backgrounds */
+        @media (max-width: 768px) {
+            #section1 {
+                background-image: url('images/ads-management-hero.webp');
+            }
+            #section4 {
+                background-image: url('images/ads-management-cta.webp');
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Menu Button -->
+    <div class="menu-btn" id="menu-btn" onclick="document.getElementById('popup-menu').classList.add('active');">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+          <path d="M3 18h18v-2H3v2zm0-5h18v-2H3v2zm0-7v2h18V6H3z"/>
+        </svg>
+    </div>
+
+    <!-- Popup Menu -->
+    <div class="popup-menu" id="popup-menu">
+        <button class="menu-close" id="menu-close" onclick="document.getElementById('popup-menu').classList.remove('active');">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+                <path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/>
+            </svg>
+        </button>
+        <div class="menu-links">
+            <a href="/" class="menu-link-main">HOME</a>
+            <span class="menu-link-main">SERVICES</span>
+            <a href="/social-media" class="menu-link-sub">Social Media Marketing</a>
+            <a href="/media-production" class="menu-link-sub">Media Production</a>
+            <a href="/ads-management" class="menu-link-sub">Ads Management</a>
+            <a href="/website-design-development" class="menu-link-sub">Website Design & Development</a>
+            <a href="/event-planning-pr" class="menu-link-sub">Event Planning & PR</a>
+            <a href="/influencer-marketing" class="menu-link-sub">Influencer Marketing</a>
+            <a href="#" class="menu-link-main">ABOUT US</a>
+            <a href="#" class="menu-link-main">CONTACT US</a>
+        </div>
+    </div>
+    
+    <div id="servicecube-container">
+        <div id="section1" class="section">
+            <div class="content-overlay">
+                <div class="section1-container">
+                    <div class="left-container2">
+                        <div class="rotated-wrapper">
+                            <h1 class="rotated-title2">ADS<br>MANAGEMENT</h1>
+                        </div>
+                    </div>
+                    <div class="right-container">
+                        <p>Stop burning money on ads that don't convert. We optimize your Google Ads, Meta Ads, and TikTok advertising campaigns to deliver qualified leads, not just clicks. From data-driven startups to established enterprises across Asia, we manage your ad spend like it's our own and turn advertising costs into revenue growth.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div id="section2" class="section">
+            <div class="content-overlay">
+                <h2 id="section2-title" class="outline-text">WHAT WE DO</h2>
+                <p id="section2-text">Our Google Ads specialists optimize search campaigns, shopping ads, and display advertising for maximum ROI. We eliminate wasted spend on irrelevant keywords and focus budget on searches that convert into customers.</p>
+            </div>
+        </div>
+
+        <div id="section4" class="section">
+            <div class="content-overlay" style="justify-content: flex-end; padding-bottom: 10%;">
+                <h2>READY TO TURN AD SPEND INTO PROFIT?</h2>
+                <p>Let's optimize your advertising campaigns for results that matter to your bottom line.<br>Get in touch with us at hello@mediaunboxx.com</p>
+            </div>
+        </div>
+    </div>
+
+    <div class="nav-dots-container">
+        <!-- Up arrow -->
+        <div class="nav-arrow nav-arrow-up" id="nav-arrow-up">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
+                <path d="M7.41 15.41L12 10.83l4.59 4.58L18 14l-6-6-6 6z"/>
+            </svg>
+        </div>
+        
+        <!-- Nav dots -->
+        <div class="nav-dots">
+            <div class="nav-dot active" data-section="0"></div>
+            <div class="nav-dot" data-section="1"></div>
+            <div class="nav-dot" data-section="2"></div>
+        </div>
+        
+        <!-- Down arrow -->
+        <div class="nav-arrow nav-arrow-down" id="nav-arrow-down">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
+                <path d="M7.41 8.59L12 13.17l4.59-4.58L18 10l-6 6-6-6z"/>
+            </svg>
+        </div>
+    </div>
+    
+    <div id="button-container" style="display: none; position: fixed; bottom: 8%; left: 0; width: 100%; display: flex; justify-content: center; gap: 12px; z-index: 1000; opacity: 0;">
+        <a id="button1PS" href="#" class="active-button" style="width: 90px; height: 90px; display: flex; align-items: center; justify-content: center; background-color: #243447; color: white; font-size: 1.1rem; font-weight: 500; text-decoration: none; border: none; cursor: pointer; box-shadow: 0 4px 8px rgba(0,0,0,0.3); transition: all 0.3s ease; text-align: center;">Google Ads<br>Management</a>
+        <a id="button2PS" href="#" style="width: 90px; height: 90px; display: flex; align-items: center; justify-content: center; background-color: white; color: #141d26; font-size: 1.1rem; font-weight: 500; text-decoration: none; border: none; cursor: pointer; box-shadow: 0 4px 8px rgba(0,0,0,0.3); transition: all 0.3s ease; text-align: center;">Meta Ads<br>Management</a>
+        <a id="button3PS" href="#" style="width: 90px; height: 90px; display: flex; align-items: center; justify-content: center; background-color: white; color: #141d26; font-size: 1.1rem; font-weight: 500; text-decoration: none; border: none; cursor: pointer; box-shadow: 0 4px 8px rgba(0,0,0,0.3); transition: all 0.3s ease; text-align: center;">TikTok Ads<br>Management</a>
+        <a id="button4PS" href="#" style="width: 90px; height: 90px; display: flex; align-items: center; justify-content: center; background-color: white; color: #141d26; font-size: 1.1rem; font-weight: 500; text-decoration: none; border: none; cursor: pointer; box-shadow: 0 4px 8px rgba(0,0,0,0.3); transition: all 0.3s ease; text-align: center;">Analytics &<br>Optimization</a>
+      </div>
+
+    <!-- Video Modal with responsive video sources -->
+    <div id="video-modal" class="video-modal">
+        <div class="video-container">
+            <button class="close-modal" onclick="closeVideoModal()">&times;</button>
+            <video id="modal-video" class="modal-video" controls autoplay muted>
+                <!-- Landscape video for desktop/tablet -->
+                <source class="landscape-video" src="/videos/test_video_landscape.mp4" type="video/mp4">
+                <!-- Portrait video for mobile -->
+                <source class="portrait-video" src="/videos/test_video_mobile.mp4" type="video/mp4" media="(max-width: 768px) and (orientation: portrait)">
+                Your browser does not support the video tag.
+            </video>
+        </div>
+    </div>
+    
+    <!-- Custom JavaScript -->
+    <script src="js/muheader-script.js"></script>
+    <script src="js/muservice-script.js"></script>
+</body>
+</html>
