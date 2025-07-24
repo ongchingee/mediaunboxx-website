@@ -19,7 +19,7 @@
         #section1 {
             background-image: url('images/ads-management-hero.webp');
         }
-        #section3 {
+        #section4 {
             background-image: url('images/ads-management-cta.webp');
         }
         
@@ -28,7 +28,7 @@
             #section1 {
                 background-image: url('images/ads-management-hero.webpp');
             }
-            #section3 {
+            #section4 {
                 background-image: url('images/ads-management-cta.webp');
             }
         }
@@ -38,7 +38,7 @@
             #section1 {
                 background-image: url('images/ads-management-hero.webp');
             }
-            #section3 {
+            #section4 {
                 background-image: url('images/ads-management-cta.webp');
             }
         }
@@ -95,7 +95,19 @@
             </div>
         </div>
 
-        <div id="section3" class="section">
+        <div id="section3" class="section"> <!-- Edited section 3 video -->
+            <div class="content-overlay"> 
+                <h2 class="section-title">Our Works</h2>
+
+            </div>
+            <video id="background-video" autoplay muted loop playsinline preload="auto" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: cover; z-index: -1;">
+              <source src="videos/cube-face-performance-strategies-800x800-compressed.mp4" type="video/mp4">
+              <source src="#" type="video/webm">
+                  Your browser does not support the video tag.
+            </video>
+        </div>
+
+        <div id="section4" class="section">
             <div class="content-overlay" style="justify-content: flex-end; padding-bottom: 10%;">
                 <h2>READY TO TURN AD SPEND INTO PROFIT?</h2>
                 <p>Let's optimize your advertising campaigns for results that matter to your bottom line.<br>Get in touch with us at hello@mediaunboxx.com</p>
@@ -116,6 +128,7 @@
             <div class="nav-dot active" data-section="0"></div>
             <div class="nav-dot" data-section="1"></div>
             <div class="nav-dot" data-section="2"></div>
+            <div class="nav-dot" data-section="3"></div>
         </div>
         
         <!-- Down arrow -->
@@ -134,23 +147,9 @@
       </div>
 
     <!--button container for section 4 -->
-    <div id="button-container-section3" style="display: none; position: fixed; bottom: 8%; left: 0; width: 100%; display: flex; justify-content: center; gap: 12px; z-index: 1000; opacity: 0;">
+    <div id="button-container-section4" style="display: none; position: fixed; bottom: 8%; left: 0; width: 100%; display: flex; justify-content: center; gap: 12px; z-index: 1000; opacity: 0;">
         <a id="button1S4" href="mailto:hello@mediaunboxx.com" class="active-button" style="width: 120px; height: 48px; display: flex; align-items: center; justify-content: center; background-color: #243447; color: white; font-size: 1.1rem; font-weight: 500; text-decoration: none; border: none; border-radius: 3px; box-shadow: 0 4px 8px rgba(0,0,0,0.3); transition: all 0.3s ease; text-align: center;">Email Us</a>
         <a id="button2S4" href="https://wa.me/6587525598" target="_blank" rel="noopener noreferrer" style="width: 160px; height: 48px; display: flex; align-items: center; justify-content: center; background-color: white; color: #141d26; font-size: 1.1rem; font-weight: 500; text-decoration: none; border: none; border-radius: 3px; box-shadow: 0 4px 8px rgba(0,0,0,0.3); transition: all 0.3s ease; text-align: center;">WhatsApp Us</a>
-
-    <!-- Video Modal with responsive video sources -->
-    <div id="video-modal" class="video-modal">
-        <div class="video-container">
-            <button class="close-modal" onclick="closeVideoModal()">&times;</button>
-            <video id="modal-video" class="modal-video" controls autoplay muted>
-                <!-- Landscape video for desktop/tablet -->
-                <source class="landscape-video" src="/videos/test_video_landscape.mp4" type="video/mp4">
-                <!-- Portrait video for mobile -->
-                <source class="portrait-video" src="/videos/test_video_mobile.mp4" type="video/mp4" media="(max-width: 768px) and (orientation: portrait)">
-                Your browser does not support the video tag.
-            </video>
-        </div>
-    </div>
     
     <!-- Custom JavaScript -->
     <script src="js/muheader-script.js"></script>
