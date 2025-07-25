@@ -43,10 +43,16 @@
             }
         }
 
-        /* Related Services Links Hover Effects */
+       /* Related Services Links Hover Effects */
         .related-service-link:hover {
             color: #C51F5D !important;
-            transform: scale(1.1);
+            transform: scale(1.1) translateX(10px);
+        }
+        
+        /* Fade-in animation when section becomes visible */
+        .related-services-container.fade-in {
+            opacity: 1 !important;
+            transform: translateY(0) !important;
         }
         
         /* Mobile adjustments for related services */
@@ -56,14 +62,21 @@
             }
             
             .related-service-link {
-                font-size: 1.2rem !important;
-                margin-bottom: 0.8rem !important;
+                font-size: 1.4rem !important;
+                margin-bottom: 1rem !important;
             }
             
             #section3 h2.section-title {
                 font-size: 12vw !important;
+                margin-bottom: 1.5rem !important;
+            }
+            
+            #section3 p {
+                font-size: 1.1rem !important;
+                margin-bottom: 2rem !important;
             }
         }
+
     </style>
 </head>
 <body>
@@ -119,18 +132,20 @@
 
         <div id="section3" class="section"> <!-- Related Services section -->
             <div class="content-overlay" style="justify-content: center; align-items: flex-start; padding: 5% 8% 5% 8%; text-align: left;">
-                <div style="max-width: 600px;">
-                    <p style="font-size: 1.3rem; line-height: 1.6; margin-bottom: 2rem; color: white;">
+                <div class="related-services-container" style="max-width: 600px; opacity: 0; transform: translateY(30px); transition: opacity 0.8s ease, transform 0.8s ease;">
+                    <h2 class="section-title" style="font-size: 10vw; font-weight: 700; margin: 0 0 2rem 0; color: white; text-transform: uppercase;">Related Services</h2>
+                    
+                    <p style="font-size: 1.3rem; line-height: 1.6; margin-bottom: 2.5rem; color: white;">
                         Maximize your advertising ROI with complementary services that amplify your campaigns and create a cohesive digital presence across all touchpoints.
                     </p>
                     
-                    <div style="margin-bottom: 3rem;">
-                        <a href="/social-media" class="related-service-link" style="display: block; font-size: 1.4rem; font-weight: 600; color: white; text-decoration: none; margin-bottom: 1rem; transition: all 0.3s ease;">Social Media Marketing</a>
-                        <a href="/influencer-marketing" class="related-service-link" style="display: block; font-size: 1.4rem; font-weight: 600; color: white; text-decoration: none; margin-bottom: 1rem; transition: all 0.3s ease;">Influencer Marketing</a>
-                        <a href="/website-design-development" class="related-service-link" style="display: block; font-size: 1.4rem; font-weight: 600; color: white; text-decoration: none; margin-bottom: 1rem; transition: all 0.3s ease;">Website Design & Development</a>
+                    <div style="margin-bottom: 1rem;">
+                        <a href="/social-media" class="related-service-link" style="display: block; font-size: 1.6rem; font-weight: 600; color: white; text-decoration: none; margin-bottom: 1.2rem; transition: all 0.3s ease; text-transform: uppercase; transform-origin: left center;">SOCIAL MEDIA MARKETING</a>
+                        
+                        <a href="/influencer-marketing" class="related-service-link" style="display: block; font-size: 1.6rem; font-weight: 600; color: white; text-decoration: none; margin-bottom: 1.2rem; transition: all 0.3s ease; text-transform: uppercase; transform-origin: left center;">INFLUENCER MARKETING</a>
+                        
+                        <a href="/website-design-development" class="related-service-link" style="display: block; font-size: 1.6rem; font-weight: 600; color: white; text-decoration: none; margin-bottom: 1.2rem; transition: all 0.3s ease; text-transform: uppercase; transform-origin: left center;">WEBSITE DESIGN & DEVELOPMENT</a>
                     </div>
-                    
-                    <h2 class="section-title" style="font-size: 10vw; font-weight: 700; margin: 0; color: white; text-transform: uppercase;">Related Services</h2>
                 </div>
             </div>
             <video id="background-video" autoplay muted loop playsinline preload="auto" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: cover; z-index: -1;">
@@ -187,5 +202,45 @@
     <!-- Custom JavaScript -->
     <script src="js/muheader-script.js"></script>
     <script src="js/muservice-script.js"></script>
+    <script>
+    // Fade-in animation for Related Services section
+    document.addEventListener('DOMContentLoaded', function() {
+        const relatedServicesContainer = document.querySelector('.related-services-container');
+        
+        // Function to check if element is in viewport
+        function isElementInViewport(el) {
+            const rect = el.getBoundingClientRect();
+            return (
+                rect.top >= 0 &&
+                rect.left >= 0 &&
+                rect.bottom <= (window.innerHeight || document.documentElement.clientHeight) &&
+                rect.right <= (window.innerWidth || document.documentElement.clientWidth)
+            );
+        }
+        
+        // Function to check if element is partially visible
+        function isElementPartiallyVisible(el) {
+            const rect = el.getBoundingClientRect();
+            const windowHeight = window.innerHeight || document.documentElement.clientHeight;
+            const windowWidth = window.innerWidth || document.documentElement.clientWidth;
+            
+            return (rect.bottom >= 0 && rect.top <= windowHeight) &&
+                   (rect.right >= 0 && rect.left <= windowWidth);
+        }
+        
+        // Function to handle scroll
+        function handleScroll() {
+            if (relatedServicesContainer && isElementPartiallyVisible(relatedServicesContainer)) {
+                relatedServicesContainer.classList.add('fade-in');
+            }
+        }
+        
+        // Listen for scroll events
+        window.addEventListener('scroll', handleScroll);
+        
+        // Check on page load
+        handleScroll();
+    });
+    </script>
 </body>
 </html>
