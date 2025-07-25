@@ -215,45 +215,82 @@
     <!-- Custom JavaScript -->
     <script src="js/muheader-script.js"></script>
     <script src="js/muservice-script.js"></script>
+
     <script>
     // Fade-in animation for Related Services section
     document.addEventListener('DOMContentLoaded', function() {
         const relatedServicesContainer = document.querySelector('.related-services-container');
         
-        // Function to check if element is in viewport
-        function isElementInViewport(el) {
-            const rect = el.getBoundingClientRect();
-            return (
-                rect.top >= 0 &&
-                rect.left >= 0 &&
-                rect.bottom <= (window.innerHeight || document.documentElement.clientHeight) &&
-                rect.right <= (window.innerWidth || document.documentElement.clientWidth)
-            );
-        }
-        
         // Function to check if element is partially visible
         function isElementPartiallyVisible(el) {
+            if (!el) return false;
             const rect = el.getBoundingClientRect();
             const windowHeight = window.innerHeight || document.documentElement.clientHeight;
-            const windowWidth = window.innerWidth || document.documentElement.clientWidth;
             
-            return (rect.bottom >= 0 && rect.top <= windowHeight) &&
-                   (rect.right >= 0 && rect.left <= windowWidth);
+            // Element is visible if any part is in viewport
+            return (rect.bottom >= 0 && rect.top <= windowHeight);
         }
         
-        // Function to handle scroll
-        function handleScroll() {
+        // Function to handle the fade-in
+        function handleFadeIn() {
             if (relatedServicesContainer && isElementPartiallyVisible(relatedServicesContainer)) {
                 relatedServicesContainer.classList.add('fade-in');
+                console.log('Fade-in triggered'); // For debugging
             }
         }
         
-        // Listen for scroll events
-        window.addEventListener('scroll', handleScroll);
+        // Listen for the cube transition events (which are used in muservice-script.js)
+        function checkSection3Visibility() {
+            // Check if we're on section 3 (currentSection === 2 in the script)
+            const section3 = document.getElementById('section3');
+            if (section3) {
+                const computedStyle = window.getComputedStyle(section3);
+                const transform = computedStyle.transform;
+                
+                // If section3 is visible (no rotation applied), trigger fade-in
+                if (transform === 'none' || transform.includes('rotateX(0deg)') || transform.includes('translateZ(-50vh) rotateX(-180deg)')) {
+                    setTimeout(handleFadeIn, 300); // Small delay for smooth transition
+                }
+            }
+        }
         
-        // Check on page load
-        handleScroll();
+        // Override the updateCube function to include our fade-in
+        const originalUpdateCube = window.updateCube;
+        if (typeof originalUpdateCube === 'function') {
+            window.updateCube = function() {
+                originalUpdateCube.apply(this, arguments);
+                setTimeout(checkSection3Visibility, 100);
+            };
+        }
+        
+        // Also listen for regular scroll events as backup
+        let scrollTimeout;
+        window.addEventListener('scroll', function() {
+            clearTimeout(scrollTimeout);
+            scrollTimeout = setTimeout(handleFadeIn, 50);
+        }, { passive: true });
+        
+        // Check immediately on load
+        setTimeout(handleFadeIn, 500);
+        
+        // Also check when section changes (listen for cube rotations)
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'ArrowDown' || e.key === 'ArrowUp') {
+                setTimeout(checkSection3Visibility, 1000);
+            }
+        });
+        
+        // Listen for nav dot clicks
+        const navDots = document.querySelectorAll('.nav-dot');
+        navDots.forEach((dot, index) => {
+            dot.addEventListener('click', function() {
+                if (index === 2) { // Section 3 (0-indexed)
+                    setTimeout(handleFadeIn, 1000);
+                }
+            });
+        });
     });
     </script>
+
 </body>
 </html>
