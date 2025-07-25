@@ -91,15 +91,30 @@
             margin-bottom: 2rem !important;
         }
 
-        /* CSS-only fade-in animation for Related Services */
+       /* Override existing styles and add fade-in animation */
+        #section3 .content-overlay {
+            justify-content: flex-start !important;
+            align-items: flex-start !important;
+        }
+        
+        /* Related Services Container - Initial hidden state */
         .related-services-container {
-            animation: fadeInUp 1.2s ease-out 0.5s both;
+            max-width: 600px;
+            opacity: 0;
+            transform: translateY(50px);
+            animation: none;
+        }
+        
+        /* Trigger animation when section becomes active */
+        #section3.active .related-services-container,
+        .related-services-container.animate {
+            animation: fadeInUp 1s ease-out 0.3s forwards;
         }
         
         @keyframes fadeInUp {
             0% {
                 opacity: 0;
-                transform: translateY(30px);
+                transform: translateY(50px);
             }
             100% {
                 opacity: 1;
@@ -107,25 +122,35 @@
             }
         }
         
-        /* Optional: Add staggered animation for individual elements */
-        .related-services-container h2 {
-            animation: fadeInUp 0.8s ease-out 0.7s both;
+        /* Staggered animations for child elements */
+        #section3.active .related-services-container h2,
+        .related-services-container.animate h2 {
+            animation: fadeInUp 0.6s ease-out 0.5s forwards;
+            opacity: 0;
         }
         
-        .related-services-container p {
-            animation: fadeInUp 0.8s ease-out 0.9s both;
+        #section3.active .related-services-container p,
+        .related-services-container.animate p {
+            animation: fadeInUp 0.6s ease-out 0.7s forwards;
+            opacity: 0;
         }
         
-        .related-services-container a:nth-child(1) {
-            animation: fadeInUp 0.6s ease-out 1.1s both;
+        #section3.active .related-services-container a:nth-of-type(1),
+        .related-services-container.animate a:nth-of-type(1) {
+            animation: fadeInUp 0.5s ease-out 0.9s forwards;
+            opacity: 0;
         }
         
-        .related-services-container a:nth-child(2) {
-            animation: fadeInUp 0.6s ease-out 1.3s both;
+        #section3.active .related-services-container a:nth-of-type(2),
+        .related-services-container.animate a:nth-of-type(2) {
+            animation: fadeInUp 0.5s ease-out 1.1s forwards;
+            opacity: 0;
         }
         
-        .related-services-container a:nth-child(3) {
-            animation: fadeInUp 0.6s ease-out 1.5s both;
+        #section3.active .related-services-container a:nth-of-type(3),
+        .related-services-container.animate a:nth-of-type(3) {
+            animation: fadeInUp 0.5s ease-out 1.3s forwards;
+            opacity: 0;
         }
         
     </style>
@@ -253,5 +278,32 @@
     <!-- Custom JavaScript -->
     <script src="js/muheader-script.js"></script>
     <script src="js/muservice-script.js"></script>
+
+    <script>
+    // Simple trigger for Related Services animation
+    document.addEventListener('DOMContentLoaded', function() {
+        const container = document.querySelector('.related-services-container');
+        
+        // Trigger animation after a short delay
+        setTimeout(function() {
+            if (container) {
+                container.classList.add('animate');
+            }
+        }, 1500);
+        
+        // Also trigger when navigating to section 3
+        const navDots = document.querySelectorAll('.nav-dot');
+        navDots.forEach((dot, index) => {
+            dot.addEventListener('click', function() {
+                if (index === 2 && container) { // Section 3
+                    setTimeout(() => {
+                        container.classList.add('animate');
+                    }, 800);
+                }
+            });
+        });
+    });
+    </script>
+    
 </body>
 </html>
