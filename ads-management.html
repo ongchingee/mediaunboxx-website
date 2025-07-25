@@ -77,6 +77,19 @@
             }
         }
 
+        /* Override absolute positioning for Related Services title */
+        #section3 h2.section-title {
+            position: static !important;
+            bottom: auto !important;
+            left: auto !important;
+            z-index: auto !important;
+        }
+        
+        /* Ensure proper spacing and no overlap */
+        .related-services-container h2.section-title {
+            position: relative !important;
+            margin-bottom: 2rem !important;
+        }
     </style>
 </head>
 <body>
