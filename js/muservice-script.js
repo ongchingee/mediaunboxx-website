@@ -1096,4 +1096,14 @@ document.addEventListener('DOMContentLoaded', function() {
     
     // Initialize with a slight delay
     setTimeout(initCustomCursor, 500);
+
+    // Quick fix for cursor disappearing
+    window.addEventListener('pageshow', function(event) {
+        setTimeout(() => {
+            if (window.reinitializeCursor) {
+                window.reinitializeCursor();
+            }
+        }, 200);
+    });
+    
 })();
