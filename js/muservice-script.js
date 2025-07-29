@@ -804,8 +804,8 @@ document.addEventListener('DOMContentLoaded', function() {
     
 });
 
-// ===== CUSTOM CURSOR IMPLEMENTATION =====
-// OPTIMIZED CUSTOM CURSOR IMPLEMENTATION
+// ===== IMPROVED CUSTOM CURSOR IMPLEMENTATION =====
+// This fixes the cursor disappearing issue when switching between service pages
 (function() {
     // Only run on non-touch devices
     if ('ontouchstart' in window || navigator.maxTouchPoints > 0) {
@@ -816,229 +816,9 @@ document.addEventListener('DOMContentLoaded', function() {
     let isInitialized = false;
     let cursor = null;
     let animationFrameId = null;
+    let isVisible = true;
     
-    function initCustomCursor() {
-        // Prevent multiple initializations
-        if (isInitialized) return;
-        isInitialized = true;
-        
-        // Create cursor only once
-        cursor = document.createElement('div');
-        cursor.classList.add('custom-cursor');
-        document.body.appendChild(cursor);
-        
-        // Use RAF for smoother performance and less CPU usage
-        function updateCursorPosition(e) {
-            // Cancel any pending animation frame
-            if (animationFrameId) {
-                cancelAnimationFrame(animationFrameId);
-            }
-            
-            // Schedule the update for the next frame
-            animationFrameId = requestAnimationFrame(() => {
-                const x = e.clientX;
-                const y = e.clientY;
-                cursor.style.transform = `translate(${x}px, ${y}px)`;
-            });
-        }
-        
-        // Use performance-optimized event listeners
-        document.addEventListener('mousemove', updateCursorPosition, { passive: true });
-        
-        // Track mouse enter/leave for the window
-        document.addEventListener('mouseenter', () => {
-            cursor.style.opacity = '1';
-        }, { passive: true });
-        
-        document.addEventListener('mouseleave', () => {
-            cursor.style.opacity = '0';
-        }, { passive: true });
-        
-        // Optimized hover handling for section4 buttons
-        setupHoverHandlers();
-    }
-    
-    // More efficient hover handlers
-    function setupHoverHandlers() {
-        const section4Buttons = document.querySelectorAll('#button-container-section4 a');
-        
-        // Use event delegation instead of multiple listeners when possible
-        section4Buttons.forEach(button => {
-            // Store the original text to avoid DOM manipulation on each hover
-            const buttonText = "Get in touch!";
-            
-            // Add hover handlers just once per button
-            button.addEventListener('mouseenter', () => {
-                if (!cursor) return;
-                cursor.classList.add('expanded');
-                cursor.textContent = buttonText;
-            }, { passive: true });
-            
-            button.addEventListener('mouseleave', () => {
-                if (!cursor) return;
-                cursor.classList.remove('expanded');
-                cursor.textContent = '';
-            }, { passive: true });
-        });
-        
-        // Future expansion - Currently commented out
-        // Uncomment to apply to section2 buttons as well
-        /*
-        const section2Buttons = document.querySelectorAll('#button-container a');
-        section2Buttons.forEach(button => {
-            button.addEventListener('mouseenter', () => {
-                if (!cursor) return;
-                cursor.classList.add('expanded');
-                cursor.textContent = "Learn More!";
-            }, { passive: true });
-            
-            button.addEventListener('mouseleave', () => {
-                if (!cursor) return;
-                cursor.classList.remove('expanded');
-                cursor.textContent = '';
-            }, { passive: true });
-        });
-        */
-    }
-    
-    // Function to ensure video controls use custom cursor
-    function setupVideoControls() {
-        // Wait for video modal to be active
-        const videoObserver = new MutationObserver(function(mutations) {
-            mutations.forEach(function(mutation) {
-                if (mutation.attributeName === 'class') {
-                    const videoModal = document.getElementById('video-modal');
-                    if (videoModal && videoModal.classList.contains('active')) {
-                        // Target the video and its controls
-                        const videoElement = document.getElementById('modal-video');
-                        if (videoElement) {
-                            // Force cursor: none on the video element
-                            videoElement.style.cursor = 'none';
-                            
-                            // If the controls are within an iframe or shadow DOM
-                            // we might need a more aggressive approach
-                            applyToVideoElements();
-                        }
-                    }
-                }
-            });
-        });
-        
-        const videoModal = document.getElementById('video-modal');
-        if (videoModal) {
-            videoObserver.observe(videoModal, { attributes: true });
-        }
-        
-        // Add event handler for video play button
-        const playButton = document.querySelector('.play-button');
-        if (playButton) {
-            playButton.addEventListener('mouseenter', () => {
-                if (!cursor) return;
-                cursor.classList.add('expanded');
-                cursor.textContent = "Play Video";
-            }, { passive: true });
-            
-            playButton.addEventListener('mouseleave', () => {
-                if (!cursor) return;
-                cursor.classList.remove('expanded');
-                cursor.textContent = '';
-            }, { passive: true });
-        }
-    }
-
-    // More aggressive approach to target video elements
-    function applyToVideoElements() {
-        // Force cursor: none through a stylesheet
-        const style = document.createElement('style');
-        style.innerHTML = `
-            /* Basic video controls */
-            video::-webkit-media-controls-panel,
-            video::-webkit-media-controls-play-button,
-            video::-webkit-media-controls-volume-slider,
-            video::-webkit-media-controls-mute-button,
-            video::-webkit-media-controls-timeline,
-            video::-webkit-media-controls-current-time-display,
-            video::-webkit-media-controls-time-remaining-display,
-            video::-webkit-media-controls-fullscreen-button,
-            video::-webkit-media-controls-timeline-container,
-            video::-webkit-media-controls-enclosure,
-            
-            /* Specific targets for More Options button */
-            video::-webkit-media-controls-toggle-closed-captions-button,
-            video::-webkit-media-controls-overflow-button,
-            video::-webkit-media-controls-more-options-button,
-            video::-webkit-media-controls-settings-button,
-            video::-internal-media-controls-overflow-menu-list,
-            video::-internal-media-controls-download-button,
-            video::-webkit-media-controls-overflow-menu-list,
-            video::-webkit-media-controls-overflow-button,
-            
-            /* Chrome's more options button */
-            video::-webkit-media-controls-toggle-closed-captions-button,
-            
-            /* Firefox specific */
-            video::-moz-range-thumb,
-            video::-moz-range-track,
-            video::-moz-range-progress,
-            
-            /* Safari specific */
-            video::-webkit-media-controls-panel.detail-panel,
-            video::-webkit-media-controls-panel button,
-            
-            /* Video.js player (if used) */
-            .video-js .vjs-control,
-            .video-js .vjs-big-play-button,
-            .video-js .vjs-menu-button,
-            .video-js .vjs-slider,
-            .video-js .vjs-volume-panel,
-            .video-js .vjs-progress-control,
-            .video-js .vjs-menu,
-            .video-js .vjs-menu-item {
-                cursor: none !important;
-            }
-            
-            /* Target controls activated by the More Options button */
-            div[aria-label="More options"],
-            div[aria-label="Options"],
-            div[aria-label="Settings"],
-            div[title="More options"],
-            div[title="Settings"],
-            div[role="menu"],
-            div[role="menuitem"],
-            .ytp-menuitem,
-            .ytp-settings-menu,
-            .ytp-panel-menu {
-                cursor: none !important;
-            }
-            
-            /* Target the container modal that appears when More Options is clicked */
-            div[class*="controls-menu"],
-            div[class*="popup-menu"],
-            div[class*="context-menu"],
-            div[class*="settings-menu"],
-            div[class*="overlay-menu"] {
-                cursor: none !important;
-            }
-        `;
-        document.head.appendChild(style);
-    }
-    
-    // Force cursor: none on all elements via stylesheet
-    function applyCursorStylesheet() {
-        const style = document.createElement('style');
-        style.innerHTML = `
-            html, body, a, button, input, select, textarea, label, .nav-dot, 
-            .nav-arrow, .play-button, .menu-btn, .menu-close,
-            div[role="button"], [onclick], [class*="button"], [id*="button"],
-            [tabindex="0"], [data-section], [href], .close-modal,
-            .video-overlay, .content-overlay {
-                cursor: none !important;
-            }
-        `;
-        document.head.appendChild(style);
-    }
-    
-    // Clean up function to prevent memory leaks
+    // Cleanup function to prevent memory leaks and conflicts
     function cleanupCursor() {
         if (cursor && cursor.parentNode) {
             cursor.parentNode.removeChild(cursor);
@@ -1046,15 +826,182 @@ document.addEventListener('DOMContentLoaded', function() {
         
         if (animationFrameId) {
             cancelAnimationFrame(animationFrameId);
+            animationFrameId = null;
         }
         
         isInitialized = false;
+        cursor = null;
     }
     
-    // Fix for scrollbar issues - hidden scrollbars
-    function fixScrollbarIssues() {
+    function initCustomCursor() {
+        // Clean up any existing cursor first
+        cleanupCursor();
+        
+        // Prevent multiple initializations
+        if (isInitialized) return;
+        isInitialized = true;
+        
+        // Create cursor element
+        cursor = document.createElement('div');
+        cursor.classList.add('custom-cursor');
+        cursor.innerHTML = `
+            <div class="cursor-content">
+                <span class="cursor-text"></span>
+            </div>
+        `;
+        document.body.appendChild(cursor);
+        
+        // Set initial visibility
+        cursor.style.opacity = '1';
+        cursor.style.visibility = 'visible';
+        
+        // Use RAF for smoother performance
+        function updateCursorPosition(e) {
+            if (!cursor) return;
+            
+            // Cancel any pending animation frame
+            if (animationFrameId) {
+                cancelAnimationFrame(animationFrameId);
+            }
+            
+            // Schedule the update for the next frame
+            animationFrameId = requestAnimationFrame(() => {
+                if (cursor) {
+                    const x = e.clientX;
+                    const y = e.clientY;
+                    cursor.style.transform = `translate(${x}px, ${y}px)`;
+                }
+            });
+        }
+        
+        // Event listeners with better error handling
+        document.addEventListener('mousemove', updateCursorPosition, { passive: true });
+        
+        // Track mouse enter/leave for the window
+        document.addEventListener('mouseenter', () => {
+            if (cursor && isVisible) {
+                cursor.style.opacity = '1';
+                cursor.style.visibility = 'visible';
+            }
+        }, { passive: true });
+        
+        document.addEventListener('mouseleave', () => {
+            if (cursor) {
+                cursor.style.opacity = '0';
+            }
+        }, { passive: true });
+        
+        // Handle window focus/blur events
+        window.addEventListener('focus', () => {
+            if (cursor && isVisible) {
+                cursor.style.opacity = '1';
+                cursor.style.visibility = 'visible';
+            }
+        }, { passive: true });
+        
+        window.addEventListener('blur', () => {
+            if (cursor) {
+                cursor.style.opacity = '0.5';
+            }
+        }, { passive: true });
+        
+        // Setup hover handlers
+        setupHoverHandlers();
+    }
+    
+    // More robust hover handlers
+    function setupHoverHandlers() {
+        if (!cursor) return;
+        
+        // Section 4 buttons hover
+        const setupButtonHovers = () => {
+            const section4Buttons = document.querySelectorAll('#button-container-section4 a');
+            
+            section4Buttons.forEach(button => {
+                const buttonText = "Get in touch!";
+                
+                button.addEventListener('mouseenter', () => {
+                    if (!cursor) return;
+                    cursor.classList.add('expanded');
+                    const textElement = cursor.querySelector('.cursor-text');
+                    if (textElement) {
+                        textElement.textContent = buttonText;
+                    }
+                }, { passive: true });
+                
+                button.addEventListener('mouseleave', () => {
+                    if (!cursor) return;
+                    cursor.classList.remove('expanded');
+                    const textElement = cursor.querySelector('.cursor-text');
+                    if (textElement) {
+                        textElement.textContent = '';
+                    }
+                }, { passive: true });
+            });
+        };
+        
+        // Play button hover
+        const setupPlayButtonHover = () => {
+            const playButton = document.querySelector('.play-button');
+            if (playButton) {
+                playButton.addEventListener('mouseenter', () => {
+                    if (!cursor) return;
+                    cursor.classList.add('expanded');
+                    const textElement = cursor.querySelector('.cursor-text');
+                    if (textElement) {
+                        textElement.textContent = "Play Video";
+                    }
+                }, { passive: true });
+                
+                playButton.addEventListener('mouseleave', () => {
+                    if (!cursor) return;
+                    cursor.classList.remove('expanded');
+                    const textElement = cursor.querySelector('.cursor-text');
+                    if (textElement) {
+                        textElement.textContent = '';
+                    }
+                }, { passive: true });
+            }
+        };
+        
+        // Initial setup
+        setupButtonHovers();
+        setupPlayButtonHover();
+        
+        // Re-setup when DOM changes (for dynamically added elements)
+        const observer = new MutationObserver(() => {
+            // Debounce the setup calls
+            clearTimeout(observer.timeout);
+            observer.timeout = setTimeout(() => {
+                setupButtonHovers();
+                setupPlayButtonHover();
+            }, 100);
+        });
+        
+        observer.observe(document.body, {
+            childList: true,
+            subtree: true
+        });
+    }
+    
+    // Force cursor: none on all elements via stylesheet
+    function applyCursorStylesheet() {
+        // Remove any existing cursor stylesheets first
+        const existingStyles = document.querySelectorAll('style[data-cursor-style]');
+        existingStyles.forEach(style => style.remove());
+        
         const style = document.createElement('style');
+        style.setAttribute('data-cursor-style', 'true');
         style.innerHTML = `
+            html, body, a, button, input, select, textarea, label, .nav-dot, 
+            .nav-arrow, .play-button, .menu-btn, .menu-close,
+            div[role="button"], [onclick], [class*="button"], [id*="button"],
+            [tabindex="0"], [data-section], [href], .close-modal,
+            .video-overlay, .content-overlay, video, video * {
+                cursor: none !important;
+            }
+            
+            /* Hide scrollbars to prevent cursor issues */
             html, body {
                 -ms-overflow-style: none;
                 scrollbar-width: none;
@@ -1064,46 +1011,111 @@ document.addEventListener('DOMContentLoaded', function() {
             body::-webkit-scrollbar {
                 display: none;
             }
+            
+            /* Video controls */
+            video::-webkit-media-controls-panel,
+            video::-webkit-media-controls-play-button,
+            video::-webkit-media-controls-volume-slider,
+            video::-webkit-media-controls-mute-button,
+            video::-webkit-media-controls-timeline,
+            video::-webkit-media-controls-current-time-display,
+            video::-webkit-media-controls-time-remaining-display,
+            video::-webkit-media-controls-fullscreen-button,
+            video::-webkit-media-controls-timeline-container,
+            video::-webkit-media-controls-enclosure {
+                cursor: none !important;
+            }
         `;
         document.head.appendChild(style);
     }
     
-    // Handle window resize events
-    window.addEventListener('resize', () => {
-        if (cursor) {
-            // Ensure cursor position updates on resize
-            cursor.style.opacity = '0';
+    // Handle page transitions and visibility changes
+    function handlePageTransitions() {
+        // Handle page show/hide events
+        window.addEventListener('pageshow', (event) => {
+            // Reinitialize cursor when page is shown (including back/forward navigation)
             setTimeout(() => {
-                cursor.style.opacity = '1';
+                if (!isInitialized || !cursor || !document.body.contains(cursor)) {
+                    initCustomCursor();
+                }
             }, 100);
-        }
-    }, { passive: true });
-    
-    // Clean up when page becomes hidden (modern replacement for unload)
-    document.addEventListener('visibilitychange', function() {
-        if (document.visibilityState === 'hidden') {
-            cleanupCursor();
-        }
-    }, { passive: true });
-    
-    // Additional cleanup for page navigation (fallback)
-    window.addEventListener('pagehide', cleanupCursor, { passive: true });
-    
-    // Apply all initialization
-    applyCursorStylesheet();
-    fixScrollbarIssues();
-    setupVideoControls();
-    
-    // Initialize with a slight delay
-    setTimeout(initCustomCursor, 500);
-
-    // Quick fix for cursor disappearing
-    window.addEventListener('pageshow', function(event) {
-        setTimeout(() => {
-            if (window.reinitializeCursor) {
-                window.reinitializeCursor();
+        });
+        
+        window.addEventListener('pagehide', () => {
+            // Clean up when page is hidden
+            isVisible = false;
+            if (cursor) {
+                cursor.style.opacity = '0';
             }
-        }, 200);
-    });
+        });
+        
+        // Handle visibility changes
+        document.addEventListener('visibilitychange', () => {
+            if (document.hidden) {
+                isVisible = false;
+                if (cursor) {
+                    cursor.style.opacity = '0';
+                }
+            } else {
+                isVisible = true;
+                if (cursor) {
+                    cursor.style.opacity = '1';
+                    cursor.style.visibility = 'visible';
+                }
+            }
+        });
+        
+        // Handle window resize events
+        window.addEventListener('resize', () => {
+            if (cursor && isVisible) {
+                // Ensure cursor position updates on resize
+                cursor.style.opacity = '0';
+                setTimeout(() => {
+                    if (cursor && isVisible) {
+                        cursor.style.opacity = '1';
+                    }
+                }, 50);
+            }
+        }, { passive: true });
+    }
     
+    // Main initialization function
+    function initialize() {
+        applyCursorStylesheet();
+        handlePageTransitions();
+        
+        // Initialize cursor with multiple fallbacks
+        const initWithDelay = (delay) => {
+            setTimeout(() => {
+                if (!isInitialized || !cursor || !document.body.contains(cursor)) {
+                    initCustomCursor();
+                }
+            }, delay);
+        };
+        
+        // Try initialization at different intervals
+        initWithDelay(100);   // Quick init
+        initWithDelay(500);   // Medium delay
+        initWithDelay(1000);  // Fallback init
+        
+        // Also initialize on DOMContentLoaded if not already done
+        if (document.readyState === 'loading') {
+            document.addEventListener('DOMContentLoaded', () => {
+                initWithDelay(100);
+            });
+        }
+    }
+    
+    // Clean up on page unload
+    window.addEventListener('beforeunload', cleanupCursor, { passive: true });
+    window.addEventListener('unload', cleanupCursor, { passive: true });
+    
+    // Start initialization
+    initialize();
+    
+    // Global function to manually reinitialize cursor if needed
+    window.reinitializeCursor = function() {
+        cleanupCursor();
+        setTimeout(initCustomCursor, 100);
+    };
 })();
